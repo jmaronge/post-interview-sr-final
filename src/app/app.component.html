@@ -1,0 +1,42 @@
+<p><strong>Coding Test: </strong></p>
+
+Using either Angular or React please build a small app that mimics the one below.
+
+<p><strong>Steps to complete:</strong></p>
+<ul>
+<li>Data must come from an online REST API service.  Any online REST service will be fine.  If you do not know of one, you can use:</li>
+<ul>
+<li>REST API: <a target="_blank" href="https://jsonplaceholder.typicode.com/" >JSONPlaceholder</a></li>
+ </ul>
+<li>Create 2 components</li>
+<ul>
+<li><strong>post-list</strong></li>
+<ul>
+<li>Takes in a list of posts and displays them (id, message)</li>
+</ul>
+<li><strong>comment-list</strong></li>
+<ul>
+<li>Takes in a list of comments for a particular post id and displays them.</li>
+</ul>
+</ul>
+<li>When the user clicks a post the comments for that post must display under it. You must also show the number of comments available.</li>
+<li>If not posts are available you must display a message telling the user to &ldquo;<strong>Select post to view comments</strong>&rdquo;</li>
+<li>The selected post must be highlighted in some fashion.</li>
+<li>Please apply styling to make it look a little nicer.</li>
+</ul> 
+<div style="border: solid 2px gainsboro;">
+  
+<p>
+	Posts
+</p>
+
+<post-list [posts]="posts" (postClick)="postClick($event)"></post-list>
+
+<p>
+	Comments ({{selectedComments ? selectedComments.length : 0}})
+</p>
+<comment-list *ngIf="selectedComments && selectedComments.length > 0" [comments]="selectedComments"></comment-list>
+
+<label *ngIf="!selectedComments || selectedComments.length === 0 ">Select post to view comments</label>
+
+</div>
